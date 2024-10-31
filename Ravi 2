@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Diwali</title>
+  <style>
+    /* Basic CSS to style the background and text */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: #ffcc00;
+      font-family: Arial, sans-serif;
+    }
+
+    .message {
+      font-size: 2em;
+      font-weight: bold;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    /* Firework Animation */
+    .firework {
+      width: 4px;
+      height: 20px;
+      position: absolute;
+      bottom: 0;
+      background: #ffcc00;
+      animation: firework 2s linear infinite;
+      transform-origin: bottom center;
+    }
+
+    @keyframes firework {
+      0% { opacity: 1; transform: translateY(0) scaleY(1); }
+      80% { opacity: 0; transform: translateY(-100vh) scaleY(0.1); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00; }
+      to { text-shadow: 0 0 20px #ff6600, 0 0 30px #ff6600; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message">🎆 शुभ दीपावली 🎇<br>Happy Diwali!</div>
+  </div>
+
+  <!-- JavaScript to create fireworks -->
+  <script>
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.classList.add('firework');
+      firework.style.left = Math.random() * 100 + 'vw';
+      firework.style.backgroundColor = ['#ffcc00', '#ff6600', '#ff3300'][Math.floor(Math.random() * 3)];
+      document.body.appendChild(firework);
+
+      // Remove the firework after animation
+      firework.addEventListener('animationend', () => {
+        firework.remove();
+      });
+    }
+
+    // Create multiple fireworks
+    setInterval(createFirework, 500);
+  </script>
+</body>
+</html>
